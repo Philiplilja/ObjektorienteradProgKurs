@@ -1,0 +1,121 @@
+package se.his.a14phili;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class HighscoreList {
+
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		
+		//ArrayList<HighscoreItem> highScores = new ArrayList<HighscoreItem>();	
+		//hs.add(new HighscoreItem(scan.nextLine()));
+			
+		
+		String a = "---HighScore menu---";
+		String b = "1. Insert new item";
+		String c = "2, Print list";
+		String d = "3. Reset list";
+		String e = "4. Quit";
+		
+		System.out.println(a);
+		System.out.println(b);
+		System.out.println(c);
+		System.out.println(d);
+		System.out.println(e);
+		System.out.print("Please make your choice and press enter:");
+
+		scan.close();
+		}
+	
+	public static void saveHighscore(HighscoreItem hs, String fileName){
+			try {
+				FileOutputStream stream = new FileOutputStream(fileName);
+				ObjectOutputStream objectStream = new ObjectOutputStream(stream);
+				objectStream.writeObject(hs);
+				objectStream.close();
+			} catch (Exception e) {
+			}
+		}
+		
+//		public static void saveCats1(ArrayList<SuperCat> cats, String fileName)
+//		{
+//			try {
+//				FileOutputStream stream = new FileOutputStream(fileName);
+//				ObjectOutputStream objectStream = new ObjectOutputStream(stream);
+//				for(SuperCat cat : cats) {
+//					objectStream.writeObject(cat);
+//				}
+//				//Lägger på null på slutet för att markera slut på katter i listan
+//				objectStream.writeObject(null); 
+//				objectStream.close();
+//			} catch (Exception e) {
+//			}
+//		}
+		
+//		public static void saveCats2(ArrayList<SuperCat> cats, String fileName)
+//		{
+//			try {
+//				FileOutputStream stream = new FileOutputStream(fileName);
+//				ObjectOutputStream objectStream = new ObjectOutputStream(stream);
+//				objectStream.writeObject(cats);
+//				objectStream.close();
+//			} catch (Exception e) {
+//			}
+//		}
+		
+//		public static SuperCat loadCat(String fileName)
+//		{
+//			try {
+//				FileInputStream fileStream = new FileInputStream(fileName);
+//				ObjectInputStream inputStream = new ObjectInputStream(fileStream);
+//				SuperCat cat = (SuperCat)inputStream.readObject();
+//				inputStream.close();
+//				return cat;
+//			} catch(Exception e) {}
+//			return null;
+//		}
+		
+//		public static ArrayList<SuperCat> loadCats1(String fileName)
+//		{
+//			try {
+//				FileInputStream fileStream = new FileInputStream(fileName);
+//				ObjectInputStream inputStream = new ObjectInputStream(fileStream);
+//				ArrayList<SuperCat> cats = new ArrayList<SuperCat>();
+//				SuperCat cat = null;
+//				do {
+//					cat = (SuperCat)inputStream.readObject();
+//					if(cat != null) {
+//						cats.add(cat);
+//					}
+//				} while(cat != null);
+//				inputStream.close();
+//				return cats;
+//			} catch(Exception e) {}
+//			return null;
+//		}
+		
+//		public static ArrayList<SuperCat> loadCats2(String fileName)
+//		{
+//			//Det går att läsa in hela ArrayList också, men det kan leda till 
+//			//typkonverteringsfel (om det råkar vara en arraylist med något annat), 
+//			//varför loadCats1 kan vara att föredra (ibland).
+//			try {
+//				FileInputStream fileStream = new FileInputStream(fileName);
+//				ObjectInputStream inputStream = new ObjectInputStream(fileStream);
+//				ArrayList<SuperCat> cats = null;
+//				cats = (ArrayList<SuperCat>) inputStream.readObject();
+//				inputStream.close();
+//				return cats;
+//			} catch(Exception e) {}
+//			return null;
+//		}
+		
+		ç
+}
+

@@ -1,0 +1,111 @@
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+public class Board extends JPanel implements ActionListener, GameListener {
+
+	private static final long serialVersionUID = 1L;
+	private JButton Buttons[];
+	private Game game;
+	private boolean Player = false;
+	private int PlayerMark = 1;
+
+	// Player 1 = X
+	// Player 2 = 0
+
+	Board() {
+
+		setLayout(new GridLayout(3, 3));
+		Buttons = new JButton[9];
+
+		for (int i = 0; i < Buttons.length; i++) {
+			Buttons[i] = new JButton("");
+		}
+
+		startGame();
+
+		for (int i = 0; i < Buttons.length; i++) {
+			Buttons[i].addActionListener(this);
+			add(Buttons[i]);
+		}
+	}
+
+	private void startGame() {
+
+		game = new Game();
+		game.addListener(this);
+		cellText();					//Setting no text in cells
+		disableAllButtons(true);	//Disable all buttons
+
+		Player = false;
+		PlayerMark = 1;
+	}
+
+	// Reset the game
+	public void Reset() {
+		startGame();
+	}
+	
+	//Actionlistener for all keys/cells
+	public void actionPerformed(ActionEvent E) {
+		JButton Pressed = (JButton) E.getSource();
+		
+		for (int button = 0; button <= 8; button++) {
+			if (Pressed == Buttons[button]) {
+				newText(Pressed, Player); // Setting new text into cell
+				disableButton(Pressed); // Disable button/cell after being pressed
+				game.ArrayIni(button / 3, button % 3, PlayerMark); // Arrayindex
+				PlayerMark = SwitchTurn(Player); // Switches to next player
+			}
+		}
+	}
+
+	// switches the player's turn
+	private int SwitchTurn(boolean lastestPlay) {
+		Player = !lastestPlay;
+		return lastestPlay ? 1 : 2;
+	}
+
+	// Default text in cell/button
+	private void cellText() {
+		for (int i = 0; i < Buttons.length; i++) {
+			Buttons[i].setText("");
+		}
+	}
+
+	// Setting new text in cell to either 0 or X
+	private void newText(JButton cellText, boolean Continue) {
+		if (Continue == true) {
+			cellText.setText("O");
+		} else if (Continue == false) {
+			cellText.setText("X");
+		}
+	}
+
+	// Disable button
+	private void disableButton(JButton A) {
+		A.setEnabled(false);
+	}
+
+	// Disable all buttons
+	private void disableAllButtons(boolean D) {
+		for (int i = 0; i < Buttons.length; i++) {
+			Buttons[i].setEnabled(D);
+		}
+	}
+
+	@Override
+	public void onGameOver(int selection) {
+		if(selection ==1){
+			JOptionPane.showMessageDialog(null, "Player 1 won");
+		}
+
+		else if (selection == 2) {
+			JOptionPane.showMessageDialog(null, "Player 2 won");
+		}
+		disableAllButtons(false);
+	}
+		
+}

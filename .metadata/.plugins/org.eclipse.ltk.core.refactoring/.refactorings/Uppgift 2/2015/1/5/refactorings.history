@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;Card.suit&apos; in &apos;Card&apos;&#x0A;- Original project: &apos;Uppgift 2&apos;&#x0A;- Original element: &apos;Card.suit&apos;&#x0A;- Getter method name: &apos;getSuit&apos;&#x0A;- Setter method name: &apos;setSuit&apos;&#x0A;- Field visibility: &apos;public&apos;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;suit&apos;" flags="589830" getter="getSuit" id="org.eclipse.jdt.ui.self.encapsulate" input="/src&lt;{Card.java[Card^suit" insertion="1" setter="setSuit" stamp="1422469178436" version="1.0" visibility="1"/>
+</session>

@@ -1,0 +1,111 @@
+package se.his.a14phili;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class HighscoreList {
+
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		
+		ArrayList<HighscoreItem> highScore = new ArrayList<HighscoreItem>();
+		
+		System.out.println("---HighScore menu---");
+		System.out.println("1. Insert new item");
+		System.out.println("2. Print list");
+		System.out.println("3. Reset list");
+		System.out.println("4. quit");
+		System.out.print("Please make your choice and press enter:");
+		
+		int choice = scan.nextInt();
+		
+		// Switch construct
+		switch (choice) {
+		case 1:
+		  System.out.println("Name: ");   // This is where I want to call the class
+		  System.out.println("Score: ");
+		  break;
+		case 2:
+		  System.out.println("Option 2 selected");  // this is where I want to call the class
+		  break;
+		case 3:
+		  System.out.println("The list is reset");
+		  break;
+		case 4:
+		  System.out.println("GoodBye!");
+		  break; // This break is not really necessary
+		default:
+		}
+		
+		//highScores.add(new HighscoreItem(scan.nextLine()));
+		
+		scan.close();
+		}
+	
+	public static void printHighscore(ArrayList<HighscoreItem> list)
+	{
+	}
+	
+//	public static void saveHighscore(HighscoreItem highScores, String fileName){
+//			try {
+//				FileOutputStream stream = new FileOutputStream(fileName);
+//				ObjectOutputStream objectStream = new ObjectOutputStream(stream);
+//				objectStream.writeObject(highScore);
+//				objectStream.close();
+//			} catch (Exception e) {
+//			}
+//		}
+		
+		public static void saveHighscore(ArrayList<HighscoreItem> highScores, String fileName)
+		{
+			try {
+				FileOutputStream stream = new FileOutputStream(fileName);
+				ObjectOutputStream objectStream = new ObjectOutputStream(stream);
+				for(HighscoreItem highScore : highScores) {
+					objectStream.writeObject(highScores);
+				}
+				objectStream.writeObject(null); 
+				objectStream.close();
+			} catch (Exception e) {
+			}
+		}
+		
+		
+//		public static HighscoreItem loadHighscore(String fileName)
+//		{
+//			try {
+//				FileInputStream fileStream = new FileInputStream(fileName);
+//				ObjectInputStream inputStream = new ObjectInputStream(fileStream);
+//				HighscoreItem hs = (HighscoreItem)inputStream.readObject();
+//				inputStream.close();
+//				return hs;
+//			} catch(Exception e) {}
+//			return null;
+//		}
+		
+		public static ArrayList<HighscoreItem> loadHighscore(String fileName)
+		{
+			try {
+				FileInputStream fileStream = new FileInputStream(fileName);
+				ObjectInputStream inputStream = new ObjectInputStream(fileStream);
+				ArrayList<HighscoreItem> highScores = new ArrayList<HighscoreItem>();
+				HighscoreItem highScore = null;
+				do {
+					highScore = (HighscoreItem)inputStream.readObject();
+					if(highScore != null) {
+						highScores.add(highScore);
+					}
+				} while(highScore != null);
+				inputStream.close();
+				return highScores;
+			} catch(Exception e) {}
+			return null;
+		}
+		
+}
+

@@ -1,0 +1,81 @@
+import javax.swing.*;
+
+public class Game {
+
+	private Board board;
+	private int gameArray[][];
+
+	Game(Board B) {
+		gameArray = new int[3][3];
+		board = B;
+
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				gameArray[i][j] = 0;
+			}
+		}
+	}
+	
+	private void winnerOutPut(int selection){
+		if(selection ==1){
+			JOptionPane.showMessageDialog(null, "Player 1 won");
+		}
+
+		else if (selection == 2) {
+			JOptionPane.showMessageDialog(null, "Player 2 won");
+		}
+	}
+
+	
+	private void Winning(int selection) { // checking the array index
+
+		if ((gameArray[0][0] == selection && gameArray[0][1] == selection && gameArray[0][2] == selection)
+				|| (gameArray[1][0] == selection && gameArray[1][1] == selection && gameArray[1][2] == selection)
+				|| (gameArray[2][0] == selection && gameArray[2][1] == selection && gameArray[2][2] == selection)) {
+
+			winnerOutPut(selection);
+			
+//			if (selection == 1) {
+//				JOptionPane.showMessageDialog(null, "Player 1 won");
+//			}
+//
+//			else if (selection == 2) {
+//				JOptionPane.showMessageDialog(null, "Player 2 won");
+//			}
+
+			board.DisableAllButtons(false);
+		}
+
+		else if ((gameArray[0][0] == selection && gameArray[1][0] == selection && gameArray[2][0] == selection)
+				|| (gameArray[0][1] == selection && gameArray[1][1] == selection && gameArray[2][1] == selection)
+				|| (gameArray[0][2] == selection && gameArray[1][2] == selection && gameArray[2][2] == selection)) {
+
+			if (selection == 1) {
+				JOptionPane.showMessageDialog(null, "Player 1 won");
+			}
+
+			else if (selection == 2) {
+				JOptionPane.showMessageDialog(null, "Player 2 won");
+			}
+
+			board.DisableAllButtons(false);
+		} 
+		
+		else if ((gameArray[0][0] == selection && gameArray[1][1] == selection && gameArray[2][2] == selection)
+				|| (gameArray[2][0] == selection && gameArray[1][1] == selection && gameArray[0][2] == selection)){
+
+			if (selection == 1) {
+				JOptionPane.showMessageDialog(null, "Player 1 won!");
+			} else if (selection == 2) {
+				JOptionPane.showMessageDialog(null, "Player 2 won!");
+			}
+			board.DisableAllButtons(false);
+		}
+
+	}
+	
+	public void ArrayInitialize(int i, int j, int selection) {
+		gameArray[i][j] = selection;
+		Winning(selection);
+	}
+}

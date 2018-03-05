@@ -1,0 +1,61 @@
+package se.his.a14phili;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class HighscoreList {
+
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		
+		//ArrayList<HighscoreItem> highScores = new ArrayList<HighscoreItem>();
+		String quit = "a";
+		
+		//hs.add(new HighscoreItem(scan.nextLine()));
+		while(!quit.equals("q")){
+			
+		
+		String a = "---HighScore menu---";
+		String b = "1. Insert new item";
+		String c = "2, Print list";
+		String d = "3. Reset list";
+		String e = "4. Quit";
+		String f = "Please make your choice and press enter:";
+		
+		System.out.println(a);
+		System.out.println(b);
+		System.out.println(c);
+		System.out.println(d);
+		System.out.println(e);
+		System.out.print(f);
+		
+		quit = scan.nextLine();
+		
+		//scan = new Scanner(System.in);
+		
+//		if(){
+//			System.out.println("hej")
+//		}
+		
+		
+		
+//		public static void highS(HighscoreItem hs, String textFile.txt){
+//			try {
+//				FileOutputStream stream = new FileOutputStream(textFile.txt);
+//				ObjectOutputStream objectStream = new ObjectOutputStream(stream);
+//				objectStream.writeObject(hs);
+//				objectStream.close();
+//			} catch (Exception e) {
+//			}
+//		}
+		
+		
+
+	}
+	}
+}

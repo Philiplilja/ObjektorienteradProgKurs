@@ -1,0 +1,44 @@
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
+public class Options extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+	private Board Board;
+	private JButton gameExit;
+	private JButton gameReset;
+	
+
+						//Option panel with Exit and Reset-buttons
+	Options() {
+		
+		setLayout(new FlowLayout());
+
+		gameExit = new JButton("Exit");
+		gameReset = new JButton("Reset");
+
+		gameExit.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent a) {
+				System.exit(0);
+			}
+		});
+
+		gameReset.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent a) {
+				Board.Reset();
+			}
+		});
+
+		add(gameExit);
+		add(gameReset);
+	}
+
+	public void SetObject(Board B) {
+		Board = B;
+	}
+
+}

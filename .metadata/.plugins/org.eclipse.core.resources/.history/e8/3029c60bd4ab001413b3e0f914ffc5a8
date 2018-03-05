@@ -1,0 +1,33 @@
+package se.his.a14phili;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class HighscoreList {
+
+	public static void main(String[] args) {
+		
+		String a = "---HighScore menu---";
+		String b = "1. Insert new item";
+		String c = "2, Print list";
+		String d = "3. Reset list";
+		String e = "4. Quit";
+		String f = "Please make your choice and press enter:";
+		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println(a);
+		System.out.println(b);
+		System.out.println(c);
+		System.out.println(d);
+		System.out.println(e);
+		System.out.println(f);
+		
+		
+		ArrayList<HighscoreItem> hs = new ArrayList<HighscoreItem>();
+		hs.add(new HighscoreItem(scan.nextLine()));
+		
+		
+
+	}
+}
